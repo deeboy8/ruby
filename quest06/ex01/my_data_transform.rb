@@ -75,28 +75,47 @@ print object_plus
 
 require 'date'
 
+#
 def parse_date(string)
     date_split = string.split("T")
-    print date_split
-    puts "\n"
+    #print date_split
+    #puts "\n"
+    #don't care about the date ---> need the time of day
+    #need date split 
     date_split = date_split[1].split("+")
-    print date_split
-    puts "\n"
-    t = date_split[0].to_f
-    puts t
+    #print date_split
+    #puts "\n"
+    t = date_split[0].to_i
+    return t
+end
+
+def convert_to_milliseconds(h, m, s)
+    #p h * 10
+    #h %= 24
+    tmilli = (((h * 60) + m) * 60) + s
+    #print tmilli
 end
 
 
 def time_of_day(time)
     time_of_day = parse_date(time) #returns an array of [time, seconds]
-    puts time_of_day
+    #print time_of_day
 
-    if time_of_day[0] >= (12:00:00) && time_of_day[0] <= (05:59:00)
+    h, m, s = "168:40:00".split(":").map(&:to_i)
+    h 
+    m 
+    s 
+    t_milli = convert_to_milliseconds(h, m, s)
+    print t_milli
+    
+=begin
+    if time_of_day[0] >= convert_t(12:00:00) && time_of_day[0] <= (05:59:00) #need to convert time to milliseconds/nanoseconds
         return nil
     elsif time_of_day[0] >= (6:00:00) && time_of_day[0] <= (11:59:00)
         return "morning"
     end
+=end
 end
 
 time = DateTime.parse('2020-03-06 03:37:56', '%Y-%m-%d %H:%M:%S')
-puts coffee_time = time_of_day(time.to_s)
+coffee_time = time_of_day(time.to_s)
