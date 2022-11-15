@@ -52,18 +52,18 @@ def linear_search(arr, value)
     last = arr.length - 1
     puts middle = (start + last) / 2
 
-    while start != last
-        if arr[middle] == value || arr[start] == value || arr[last] == value
+    while start <= last
+        if arr[middle] == value 
             return middle
         end
         if value > arr[middle]
             start = middle + 1
             middle = (start + last) / 2
-            puts start
+            puts "new start is #{start}"
         else 
             last = middle - 1
             middle = (start + last) / 2
-            puts last
+            puts "new last is #{last}"
         end
     end
 
